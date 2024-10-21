@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ft_hexlower.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/21 17:39:16 by elavrich          #+#    #+#             */
-/*   Updated: 2024/09/21 19:27:38 by elavrich         ###   ########.fr       */
+/*   Created: 2024/09/26 16:30:50 by elavrich          #+#    #+#             */
+/*   Updated: 2024/10/21 16:39:45 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_lstsize(t_list *lst)
+int	ft_hexlower(int n, const char *format)
 {
-	int	i;
+	char			*symbols;
+	unsigned int	value;
+	unsigned int	nn;
 
-	i = 0;
-	while (lst != NULL)
+	value = 0;
+	symbols = "0123456789abcdef";
+	nn = (unsigned int)n;
+	if (nn >= 16)
 	{
-		i++;
-		lst = lst->next;
+		value += ft_hexlower(nn / 16, format);
 	}
-	return (i);
+	value += write(1, &symbols[nn % 16], 1);
+	return (value);
 }

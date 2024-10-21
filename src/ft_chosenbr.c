@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_chosenbr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/21 17:51:47 by elavrich          #+#    #+#             */
-/*   Updated: 2024/09/21 20:20:52 by elavrich         ###   ########.fr       */
+/*   Created: 2024/09/26 22:23:26 by elavrich          #+#    #+#             */
+/*   Updated: 2024/10/21 16:39:17 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+int	ft_chosenbr(int n, const char *format)
 {
-	t_list	*current;
+	int	count;
 
-	if (!new || !lst)
-		return ;
-	if (*lst == NULL)
-	{
-		*lst = new;
-		return ;
-	}
-	current = ft_lstlast(*lst);
-	current->next = new;
+	count = 0;
+	if (ft_c(format) == 'u')
+		count += ft_putunsint(n, format);
+	else
+		count += ft_putnbr(n, format);
+	return (count);
 }

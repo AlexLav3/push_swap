@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/21 17:42:02 by elavrich          #+#    #+#             */
-/*   Updated: 2024/09/21 17:51:07 by elavrich         ###   ########.fr       */
+/*   Created: 2024/09/19 19:56:25 by elavrich          #+#    #+#             */
+/*   Updated: 2024/10/21 16:39:54 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstlast(t_list *lst)
+int	ft_putchar(char c, const char *format)
 {
-	if (!lst)
-		return (NULL);
-	while (lst->next)
-	{
-		lst = lst->next;
-	}
-	return (lst);
+	(void)format;
+	write(1, &c, 1);
+	return (1);
 }

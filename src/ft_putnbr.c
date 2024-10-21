@@ -1,25 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/21 17:29:30 by elavrich          #+#    #+#             */
-/*   Updated: 2024/09/21 19:24:49 by elavrich         ###   ########.fr       */
+/*   Created: 2024/09/19 19:56:18 by elavrich          #+#    #+#             */
+/*   Updated: 2024/10/21 16:39:56 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+int	ft_putnbr(int n, const char *format)
 {
-	t_list	*new;
+	char	num;
+	int		i;
+	long	nn;
 
-	new = malloc(sizeof(t_list));
-	if (!new)
-		return (NULL);
-	new->content = content;
-	new->next = NULL;
-	return (new);
+	nn = (long)n;
+	i = 0;
+	if (nn == -2147483648)
+	{
+		write(1, "-2147483648", 11);
+		return (11);
+	}
+	if (nn < 0)
+	{
+		write(1, "-", 1);
+		nn = -nn;
+		i++;
+	}
+	if (nn >= 10)
+	{
+		i += ft_putnbr((nn / 10), format);
+	}
+	num = (nn % 10) + '0';
+	write(1, &num, 1);
+	i++;
+	return (i);
 }
+// int main()
+// {
+// 	ft_putnbr_fd(-21474848, -1);
+// }

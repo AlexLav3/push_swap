@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 00:23:37 by elavrich          #+#    #+#             */
-/*   Updated: 2024/09/23 15:58:14 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/10/21 16:36:13 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,21 +52,18 @@ void				ft_putnbr_fd(int n, int fd);
 char				*ft_strtrim(char const *s1, char const *set);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_itoa(int n);
+int					ft_printf(const char *format, ...);
+int					ft_chosehex(int n, const char *format);
+int					ft_hexlower(int n, const char *format);
+int					ft_hexupper(int n, const char *format);
+unsigned long		ft_vptr(unsigned long num, const char *format);
+int					ft_putchar_onear(char c);
+char				ft_c(const char *format);
+int					ft_putchar(char c, const char *format);
+int					ft_putstr(char *s, const char *format);
+int					ft_putnbr(int n, const char *format);
+void				ft_newl(void);
+int					ft_putunsint(unsigned int n, const char *format);
+int					ft_chosenbr(int n, const char *format);
 
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}					t_list;
-
-t_list				*ft_lstnew(void *content);
-void				ft_lstadd_front(t_list **lst, t_list *new);
-int					ft_lstsize(t_list *lst);
-t_list				*ft_lstlast(t_list *lst);
-void				ft_lstadd_back(t_list **lst, t_list *new);
-void				ft_lstdelone(t_list *lst, void (*del)(void *));
-void				ft_lstclear(t_list **lst, void (*del)(void *));
-void				ft_lstiter(t_list *lst, void (*f)(void *));
-t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
-						void (*del)(void *));
 #endif

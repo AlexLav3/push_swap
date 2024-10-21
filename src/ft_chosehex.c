@@ -1,35 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_chosehex.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/21 18:09:19 by elavrich          #+#    #+#             */
-/*   Updated: 2024/09/21 20:17:44 by elavrich         ###   ########.fr       */
+/*   Created: 2024/09/26 21:20:39 by elavrich          #+#    #+#             */
+/*   Updated: 2024/10/21 16:39:38 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+int	ft_chosehex(int n, const char *format)
 {
-	t_list	*new_list;
-	t_list	*new_obj;
+	int	count;
 
-	new_list = NULL;
-	if (!lst)
-		return (NULL);
-	while (lst)
-	{
-		new_obj = ft_lstnew(f(lst->content));
-		if (!new_obj)
-		{
-			ft_lstdelone(new_obj, del);
-			return (NULL);
-		}
-		ft_lstadd_back(&new_list, new_obj);
-		lst = lst->next;
-	}
-	return (new_list);
+	count = 0;
+	if (ft_c(format) == 'x')
+		count += ft_hexlower(n, format);
+	else
+		count += ft_hexupper(n, format);
+	return (count);
 }
