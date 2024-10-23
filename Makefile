@@ -1,6 +1,6 @@
 NAME = push_swap.a
 CFLAGS = -Wall -Werror -Wextra
-SOURCES =
+SOURCES = push_swap.c f_stack.c 
 
 OBJECTS = $(SOURCES:.c=.o)
 
