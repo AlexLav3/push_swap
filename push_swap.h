@@ -6,13 +6,14 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 16:42:36 by elavrich          #+#    #+#             */
-/*   Updated: 2024/10/24 17:22:18 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/10/24 19:12:01 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include "libft/src/libft.h"
+# include <limits.h>
 # include <stddef.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -24,6 +25,9 @@ typedef struct s_stack
 	struct s_stack	*prev;
 	struct s_stack	*next;
 }					t_stack;
+
+int					check_value(int i);
+int					check_duplicates(t_stack *stack, int value);
 
 void				sa(t_stack **stacka);
 void				sb(t_stack **stackb);

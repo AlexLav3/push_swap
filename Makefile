@@ -1,6 +1,6 @@
 NAME = push_swap.a
 CFLAGS = -Wall -Werror -Wextra
-SOURCES = push_swap.c f_stack.c f_stack.c swap_functions.c f_rp2.c
+SOURCES = push_swap.c f_stack.c f_stack.c swap_functions.c f_rp2.c other.c
 
 OBJECTS = $(SOURCES:.c=.o)
 
@@ -17,8 +17,5 @@ clean:
 
 fclean: clean
 	rm -f ${NAME}
-
-bonus:$(OBJECTS)
-	ar rcs $(NAME) $(OBJECTS)
 
 re: fclean all

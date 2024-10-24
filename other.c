@@ -1,38 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   f_rp2.c                                            :+:      :+:    :+:   */
+/*   other.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/24 17:07:24 by elavrich          #+#    #+#             */
-/*   Updated: 2024/10/24 18:44:10 by elavrich         ###   ########.fr       */
+/*   Created: 2024/10/24 18:56:43 by elavrich          #+#    #+#             */
+/*   Updated: 2024/10/24 19:11:06 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	pa(t_stack **stacka, t_stack **stackb)
+int	check_value(int i)
 {
-	t_stack	*tmp;
-
-	tmp = *stackb;
-	*stackb = tmp->next;
-	tmp->next = *stacka;
-	*stacka = tmp;
+	if (i < INT_MIN || i > INT_MAX)
+	{
+		ft_printf("Error\n");
+		return (1);
+	}
+	return (0);
 }
-void	pb(t_stack **stacka, t_stack **stackb)
+int	check_duplicates(t_stack *stack, int value)
 {
-	t_stack	*tmp;
-
-	tmp = *stacka;
-	*stacka = tmp->next;
-	tmp->next = *stacka;
-	*stackb = tmp;
+	while (stack)
+	{
+		if (stack->nbr == value)
+		{
+			ft_printf("Error \n");
+			return (1);
+		}
+		stack = stack->next;
+	}
+	return (0);
 }
-// void	ra(t_stack **stacka)
-// {
-// }
-// void	rb(t_stack **stackb)
-// {
-// }
