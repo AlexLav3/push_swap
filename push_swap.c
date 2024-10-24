@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 16:09:47 by elavrich          #+#    #+#             */
-/*   Updated: 2024/10/24 22:17:20 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/10/24 22:32:13 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	main(int argc, char **argv)
 		ft_stadd_back(&stacka, newnode);
 		i++;
 	}
-	ra(&stacka);
+	rra(&stacka);
 	ft_printf("%d\n", stacka->nbr);
 	ft_printf("%d\n", stacka->next->nbr);
 	ft_printf("%d\n", stacka->next->next->nbr);
