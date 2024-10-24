@@ -6,13 +6,13 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 16:42:36 by elavrich          #+#    #+#             */
-/*   Updated: 2024/10/23 16:36:26 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/10/24 17:22:18 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-# include "../libft/libft.h"
+# include "libft/src/libft.h"
 # include <stddef.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -28,8 +28,8 @@ typedef struct s_stack
 void				sa(t_stack **stacka);
 void				sb(t_stack **stackb);
 void				ss(t_stack **stacka, t_stack **stackb);
-void				pa(t_stack **stacka);
-void				pb(t_stack **stackb);
+void				pa(t_stack **stacka, t_stack **stackb);
+void				pb(t_stack **stacka, t_stack **stackb);
 void				ra(t_stack **stacka);
 void				rb(t_stack **stackb);
 void				rr(t_stack **stacka, t_stack **stackb);

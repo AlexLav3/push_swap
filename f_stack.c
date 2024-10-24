@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 17:01:35 by elavrich          #+#    #+#             */
-/*   Updated: 2024/10/23 16:35:39 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/10/24 17:04:20 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 t_stack	*ft_lstlast(t_stack *stacka)
 {
-	if (!lst)
+	if (!stacka)
 		return (NULL);
 	while (stacka->next)
 	{
 		stacka = stacka->next;
 	}
-	return (lst);
+	return (stacka);
 }
 
 int	stack_size(t_stack *stacka)
@@ -52,14 +52,15 @@ void	ft_stadd_back(t_stack **stacka, t_stack *new)
 {
 	t_stack	*current;
 
-	if (!new || !t_stack)
+	if (!new || !stacka)
 		return ;
-	if (*t_stack == NULL)
+	if (*stacka == NULL)
 	{
-		*t_stack = new;
+		*stacka = new;
 		return ;
 	}
-	current = ft_lstlast(*t_stack);
+	current = *stacka; 
+	current = ft_lstlast(*stacka);
 	current->next = new;
 }
 

@@ -1,38 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   f_rp2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 16:09:47 by elavrich          #+#    #+#             */
-/*   Updated: 2024/10/24 17:31:47 by elavrich         ###   ########.fr       */
+/*   Created: 2024/10/24 17:07:24 by elavrich          #+#    #+#             */
+/*   Updated: 2024/10/24 17:32:33 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+void				pa(t_stack **stacka, t_stack **stackb)
 {
-	t_stack	*stacka;
-	t_stack	*stackb;
-	t_stack	*newnode;
-	int		i;
-	int		value;
+	t_stack *tmp;
 
-	stacka = NULL;
-	stackb = NULL;
-	i = 1;
-	while (i < argc)
-	{
-		value = ft_atoi(argv[i]);
-		newnode = ft_lstnew(value);
-		ft_stadd_back(&stacka, newnode);
-		i++;
-	}
-	sa(&stacka);
-	pb(&stacka, &stackb);
-	ft_printf("\n%d\n", stackb->nbr);
-	ft_printf("%d\n", stackb->next->nbr);
-	ft_printf("%d\n", stackb->next->next->nbr);
+	tmp = *stackb;
+	*stackb = tmp->next;
+	tmp->next = *stacka;
+	*stacka = tmp;
 }
+void				pb(t_stack **stacka, t_stack **stackb)
+{
+	t_stack *tmp;
+
+	tmp = *stacka;
+	*stacka = tmp->next;
+	tmp->next = *stacka;
+	*stackb = tmp;
+}
+// void	ra(t_stack **stacka)
+// {
+// }
+// void	rb(t_stack **stackb)
+// {
+// }
