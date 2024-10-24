@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 16:09:47 by elavrich          #+#    #+#             */
-/*   Updated: 2024/10/25 00:43:37 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/10/25 01:29:09 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@ int	stack_create(char *split_argc, t_stack **stacka)
 	t_stack	*newnode;
 
 	value = ft_atoi(split_argc);
+	if (is_numeric(split_argc))
+		return (ft_printf("Error\n"), 1);
 	if (check_value(value) || check_duplicates(*stacka, value))
-		return (1);
+		return (ft_printf("Error\n"), 1);
 	newnode = ft_lstnew(value);
 	if (!newnode)
 		return (ft_printf("Error\n"), 1);
@@ -46,16 +48,16 @@ int	main(int argc, char **argv)
 		j = 0;
 		while (split_argc[j])
 		{
-			if (stack_create(split_argc[j], &stacka) == 1)
+			if (stack_create(split_argc[j], &stacka))
 				return (0);
 			j++;
 		}
 		i++;
 	}
-	// rra(&stacka);
-	ft_printf("%d\n", stacka->nbr);
-	ft_printf("%d\n", stacka->next->nbr);
-	ft_printf("%d\n", stacka->next->next->nbr);
-	// ft_printf("%d\n", stacka->next->next->next->nbr);
+	while (stacka != NULL)
+	{
+		ft_printf("%d\n", stacka->nbr);
+		stacka = stacka->next;
+	}
 	return (0);
 }
