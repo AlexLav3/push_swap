@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 18:56:43 by elavrich          #+#    #+#             */
-/*   Updated: 2024/10/24 19:11:06 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/10/24 22:21:52 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	check_value(int i)
 	}
 	return (0);
 }
+
 int	check_duplicates(t_stack *stack, int value)
 {
 	while (stack)

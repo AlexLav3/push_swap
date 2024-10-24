@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 16:09:47 by elavrich          #+#    #+#             */
-/*   Updated: 2024/10/24 19:16:33 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/10/24 22:17:20 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,14 @@ int	main(int argc, char **argv)
 			return (0);
 		newnode = ft_lstnew(value);
 		if (!newnode)
-		{
 			return (ft_printf("Error\n"), 0);
-		}
 		ft_stadd_back(&stacka, newnode);
 		i++;
 	}
+	ra(&stacka);
 	ft_printf("%d\n", stacka->nbr);
 	ft_printf("%d\n", stacka->next->nbr);
 	ft_printf("%d\n", stacka->next->next->nbr);
+	ft_printf("%d\n", stacka->next->next->next->nbr);
 	return (0);
 }

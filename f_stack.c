@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 17:01:35 by elavrich          #+#    #+#             */
-/*   Updated: 2024/10/24 17:04:20 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/10/24 22:21:22 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	ft_stadd_back(t_stack **stacka, t_stack *new)
 		*stacka = new;
 		return ;
 	}
-	current = *stacka; 
+	current = *stacka;
 	current = ft_lstlast(*stacka);
 	current->next = new;
 }
