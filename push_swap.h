@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 16:42:36 by elavrich          #+#    #+#             */
-/*   Updated: 2024/10/24 19:12:01 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/10/25 00:43:59 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_stack
 
 int					check_value(int i);
 int					check_duplicates(t_stack *stack, int value);
+int					stack_create(char *split_argc, t_stack **stacka);
 
 void				sa(t_stack **stacka);
 void				sb(t_stack **stackb);
