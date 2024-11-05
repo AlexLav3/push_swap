@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 17:07:24 by elavrich          #+#    #+#             */
-/*   Updated: 2024/10/25 00:52:06 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/11/03 19:37:58 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	pa(t_stack **stacka, t_stack **stackb)
 	t_stack	*tmp;
 
 	tmp = *stackb;
-	*stackb = tmp->next;
+	*stacka = tmp;
 	tmp->next = *stacka;
 	*stacka = tmp;
 	ft_printf("pa\n");
@@ -29,7 +29,7 @@ void	pb(t_stack **stacka, t_stack **stackb)
 
 	tmp = *stacka;
 	*stacka = tmp->next;
-	tmp->next = *stacka;
+	tmp->next = *stackb;
 	*stackb = tmp;
 	ft_printf("pb\n");
 }
@@ -38,15 +38,16 @@ void	ra(t_stack **stacka)
 {
 	t_stack	*first;
 	t_stack	*last;
-	t_stack	*tmp;
 
+	if (!*stacka || !(*stacka)->next)
+		return ;
 	first = *stacka;
-	tmp = first->next;
+	*stacka = first->next;
+	first->next = NULL;
 	last = ft_lstlast(*stacka);
 	last->next = first;
-	first->next = last;
-	*stacka = tmp;
 	ft_printf("ra\n");
+
 }
 
 void	rb(t_stack **stackb)
@@ -58,10 +59,11 @@ void	rb(t_stack **stackb)
 	first = *stackb;
 	tmp = first->next;
 	last = ft_lstlast(*stackb);
+	first->next = NULL;
 	last->next = first;
-	first->next = last;
 	*stackb = tmp;
-	ft_printf("rb\n");
+	ft_printf("pb\n");
+
 }
 
 void	rr(t_stack **stacka, t_stack **stackb)

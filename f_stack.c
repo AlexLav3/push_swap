@@ -6,32 +6,32 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 17:01:35 by elavrich          #+#    #+#             */
-/*   Updated: 2024/10/24 22:21:22 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/10/25 20:22:54 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*ft_lstlast(t_stack *stacka)
+t_stack	*ft_lstlast(t_stack *stack)
 {
-	if (!stacka)
+	if (!stack)
 		return (NULL);
-	while (stacka->next)
+	while (stack->next)
 	{
-		stacka = stacka->next;
+		stack = stack->next;
 	}
-	return (stacka);
+	return (stack);
 }
 
-int	stack_size(t_stack *stacka)
+int	stack_size_f(t_stack *stack)
 {
 	int	i;
 
 	i = 0;
-	while (stacka != NULL)
+	while (stack != NULL)
 	{
 		i++;
-		stacka = stacka->next;
+		stack = stack->next;
 	}
 	return (i);
 }

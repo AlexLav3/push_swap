@@ -6,58 +6,40 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 16:09:47 by elavrich          #+#    #+#             */
-/*   Updated: 2024/10/25 01:29:09 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/11/05 00:14:09 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	stack_create(char *split_argc, t_stack **stacka)
-{
-	int		value;
-	t_stack	*newnode;
-
-	value = ft_atoi(split_argc);
-	if (is_numeric(split_argc))
-		return (ft_printf("Error\n"), 1);
-	if (check_value(value) || check_duplicates(*stacka, value))
-		return (ft_printf("Error\n"), 1);
-	newnode = ft_lstnew(value);
-	if (!newnode)
-		return (ft_printf("Error\n"), 1);
-	ft_stadd_back(stacka, newnode);
-	return (0);
-}
-
 int	main(int argc, char **argv)
 {
+	int		i;
 	t_stack	*stacka;
 	t_stack	*stackb;
-	int		i;
-	int		j;
-	char	**split_argc;
+	t_stack	*sorted_stack;
+	int		stacka_size;
+	int		min_operations;
+	int		push_count;
 
+	sorted_stack = NULL;
 	stacka = NULL;
 	stackb = NULL;
 	i = 1;
 	if (argc == 1)
 		return (0);
-	while (i < argc)
+	if (create_stacka(argc, argv, &stacka))
+		return (0);
+	stacka_size = stack_size_f(stacka);
+	i++;
+	push_count = 0;
+	while (push_count < 2 && stacka != NULL)
 	{
-		split_argc = ft_split(argv[i], ' ');
-		j = 0;
-		while (split_argc[j])
-		{
-			if (stack_create(split_argc[j], &stacka))
-				return (0);
-			j++;
-		}
-		i++;
+		pb(&stacka, &stackb);
+		printf("%d \n", stackb->nbr);
+		push_count++;
 	}
-	while (stacka != NULL)
-	{
-		ft_printf("%d\n", stacka->nbr);
-		stacka = stacka->next;
-	}
+	min_operations = cheapest_move(stacka, stackb);
+	printf("Cheapest move requires %d operations\n", min_operations);
 	return (0);
 }
