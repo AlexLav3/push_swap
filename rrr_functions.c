@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 22:30:41 by elavrich          #+#    #+#             */
-/*   Updated: 2024/10/31 01:39:11 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/11/08 03:47:21 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,37 +14,52 @@
 
 void	rra(t_stack **stacka)
 {
-	t_stack	*first;
-	t_stack	*last;
 	t_stack	*tmp;
+	int		i;
 
-	first = *stacka;
-	last = ft_lstlast(*stacka);
-	tmp = first->next;
-	last->next = *stacka;
-	first->next = tmp;
-	*stacka = last;
-	ft_printf("rra\n");
+	if (!*stacka || !(*stacka)->next)
+		return ;
+	i = 0;
+	tmp = *stacka;
+	while ((*stacka)->next)
+	{
+		i++;
+		*stacka = (*stacka)->next;
+	}
+	(*stacka)->next = tmp;
+	while (i > 1)
+	{
+		tmp = tmp->next;
+		i--;
+	}
+	tmp->next = NULL;
 }
 
 void	rrb(t_stack **stackb)
 {
-	t_stack	*first;
-	t_stack	*last;
 	t_stack	*tmp;
+	int		i;
 
-	first = *stackb;
-	last = ft_lstlast(*stackb);
-	tmp = first->next;
-	last->next = *stackb;
-	first->next = tmp;
-	*stackb = last;
-	ft_printf("rrb\n");
+	if (!*stackb || !(*stackb)->next)
+		return ;
+	i = 0;
+	tmp = *stackb;
+	while ((*stackb)->next)
+	{
+		i++;
+		*stackb = (*stackb)->next;
+	}
+	(*stackb)->next = tmp;
+	while (i > 1)
+	{
+		tmp = tmp->next;
+		i--;
+	}
+	tmp->next = NULL;
 }
 
 void	rrr(t_stack **stacka, t_stack **stackb)
 {
 	rra(stacka);
 	rrb(stackb);
-	ft_printf("rrr\n");
 }

@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 23:55:34 by elavrich          #+#    #+#             */
-/*   Updated: 2024/11/05 00:19:24 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/11/08 03:52:58 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,11 @@ int	calculate_b_rotations(int nbr, t_stack *stack)
 	stack_size = stack_size_f(stack);
 	reverse_count = 0;
 	forward_count = 0;
-	biggest_n = find_max(stack);
-	while (stack->nbr != biggest_n)
+	biggest_n = best_b(stack, nbr);
+	ft_check(stack);
+	while (stack && stack->nbr != biggest_n)
 	{
-		if (stack->nbr == biggest_n)
-			break ;
+		// ft_printf("%d\n", stack->nbr);
 		forward_count++;
 		stack = stack->next;
 	}
@@ -67,7 +67,7 @@ int	calculate_b_rotations(int nbr, t_stack *stack)
 
 int	calculate_a_rotations(int nbr, t_stack *stack)
 {
-	int	smallest_n;
+	int	cheap_n;
 	int	forward_count;
 	int	reverse_count;
 	int	stack_size;
@@ -75,11 +75,10 @@ int	calculate_a_rotations(int nbr, t_stack *stack)
 	stack_size = stack_size_f(stack);
 	reverse_count = 0;
 	forward_count = 0;
-	smallest_n = find_min(stack);
-	while (stack)
+	cheap_n = best_b(stack, nbr);
+	while (stack && stack->nbr != cheap_n)
 	{
-		if (stack->nbr == smallest_n)
-			break ;
+		// ft_printf("%d\n", stack->nbr);
 		forward_count++;
 		stack = stack->next;
 	}
@@ -89,34 +88,23 @@ int	calculate_a_rotations(int nbr, t_stack *stack)
 	else
 		return (reverse_count);
 }
-int	cheapest_move(t_stack *stacka, t_stack *stackb)
+char	*cheapest_move(t_stack *stacka, t_stack *stackb)
 {
-	int	min_op;
-	int	cheapest_n;
-	int	nbr;
-	int	b_rotations;
-	int	a_rotations;
-	int	tot_op;
+	int		b_rotations;
+	int		a_rotations;
+	char	*tot_op;
 
-	tot_op = 0;
-	nbr = stacka->nbr;
-	min_op = INT_MAX;
-	cheapest_n = 0;
-	while (stacka)
-	{
-		nbr = stacka->nbr;
-		b_rotations = calculate_b_rotations(nbr, stackb);
-		a_rotations = calculate_a_rotations(nbr, stacka);
-		if (a_rotations == b_rotations)
-			tot_op = a_rotations;
-		else
-			tot_op = a_rotations + b_rotations;
-		if (tot_op < min_op)
-		{
-			min_op = tot_op;
-			cheapest_n = nbr;
-		}
-		stacka = stacka->next;
-	}
-	return (min_op);
+	ft_printf("a:");
+	ft_check(stacka);
+	ft_printf("b:");
+	ft_check(stackb);
+	b_rotations = calculate_b_rotations(stackb->nbr, stackb);
+	a_rotations = calculate_a_rotations(stacka->nbr, stacka);
+	if (a_rotations == b_rotations)
+		tot_op = "rrr";
+	else if (a_rotations > b_rotations)
+		tot_op = "rb";
+	else if (a_rotations < b_rotations)
+		tot_op = "ra";
+	return (tot_op);
 }

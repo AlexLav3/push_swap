@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 18:56:43 by elavrich          #+#    #+#             */
-/*   Updated: 2024/11/02 00:02:42 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/11/08 03:50:49 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,30 +64,26 @@ int	is_numeric(const char *str)
 	}
 	return (0);
 }
-
-void	push_all(t_stack **stacka, t_stack **stackb)
+int	best_b(t_stack *stack, int nbr)
 {
-	while (*stacka)
-		pb(stacka, stackb);
-}
-void	add_to_list(t_stack **list, int nbr)
-{
-	t_stack	*temp;
+	int	f_nbr;
 
-	t_stack *new = ft_lstnew(nbr);
-	if (!new)
-		return ;
-	if (!*list)
+	f_nbr = find_max(stack);
+	if (nbr > f_nbr)
 	{
-		*list = new;
+		f_nbr = find_min(stack);
+		return (f_nbr);
 	}
-	else
+	if (nbr < find_min(stack))
 	{
-		temp = *list;
-		while (temp->next)
-		{
-			temp = temp->next;
-		}
-		temp->next = new;
+		f_nbr = find_min(stack);
+		return (f_nbr);
 	}
+	while (stack)
+	{
+		if (stack->nbr > nbr && stack->nbr < f_nbr)
+			f_nbr = stack->nbr;
+		stack = stack->next;
+	}
+	return (f_nbr);
 }

@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 18:11:53 by elavrich          #+#    #+#             */
-/*   Updated: 2024/11/04 23:29:14 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/11/07 00:02:18 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,5 @@ void	sort_max_5(t_stack **stacka, t_stack **stackb)
 	while (stack_size_f(*stacka) > 1)
 		push_min(stacka, stackb);
 	while (*stackb)
-		push_all(stackb, stacka);
+		pa(stackb, stacka);
 }

@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 16:42:36 by elavrich          #+#    #+#             */
-/*   Updated: 2024/11/04 23:54:51 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/11/08 03:52:07 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,19 @@ typedef struct s_stack
 	struct s_stack	*next;
 }					t_stack;
 
+int					best_b(t_stack *stack, int nbr);
+
 int					calculate_b_rotations(int nbr, t_stack *stack);
 int					calculate_a_rotations(int nbr, t_stack *stack);
 int					find_max(t_stack *stack);
-int					cheapest_move(t_stack *stacka, t_stack *stackb);
-
+char				*cheapest_move(t_stack *stacka, t_stack *stackb);
+void				do_cheapest_m(t_stack **stacka, t_stack **stackb);
+void				push_lowest_n(t_stack **stacka, t_stack **stackb);
+int					cheapest_n(t_stack *stacka, t_stack *stackb);
 int					get_abs(int nbr);
-void				push_all(t_stack **stacka, t_stack **stackb);
-void				add_to_list(t_stack **list, int nbr);
+int					calculate_total_rotations(int nbr, t_stack *stacka,
+						t_stack *stackb);
+int					position_in_stack(t_stack *stack, int nbr);
 
 int					is_sorted(t_stack *stack);
 void				ft_check(t_stack *stack);
@@ -65,5 +70,7 @@ void				sort_max_5(t_stack **stacka, t_stack **stackb);
 
 t_stack				*ft_lstlast(t_stack *stack);
 t_stack				*ft_lstnew(int nbr);
+
+int					ft_strcmp(char *s1, char *s2);
 
 #endif
