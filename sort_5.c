@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 18:11:53 by elavrich          #+#    #+#             */
-/*   Updated: 2024/11/07 00:02:18 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/11/08 22:32:07 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ void	push_min(t_stack **stacka, t_stack **stackb)
 		return ;
 	min_val = find_min(*stacka);
 	while ((*stacka)->nbr != min_val)
+	{
 		ra(stacka);
+		ft_printf("ra\n");
+	}
 	pb(stacka, stackb);
 }
 

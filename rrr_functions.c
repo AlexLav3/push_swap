@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 22:30:41 by elavrich          #+#    #+#             */
-/*   Updated: 2024/11/08 03:47:21 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/11/08 22:39:14 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,5 @@ void	rrr(t_stack **stacka, t_stack **stackb)
 {
 	rra(stacka);
 	rrb(stackb);
+	ft_printf("rrr\n");
 }

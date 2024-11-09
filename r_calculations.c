@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 23:55:34 by elavrich          #+#    #+#             */
-/*   Updated: 2024/11/08 03:52:58 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/11/09 01:47:23 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@ int	calculate_b_rotations(int nbr, t_stack *stack)
 	reverse_count = 0;
 	forward_count = 0;
 	biggest_n = best_b(stack, nbr);
-	ft_check(stack);
+	// ft_check(stack);
 	while (stack && stack->nbr != biggest_n)
 	{
-		// ft_printf("%d\n", stack->nbr);
+		// ft_printf("stackb nbr: %d\n", stack->nbr);
 		forward_count++;
 		stack = stack->next;
 	}
@@ -78,7 +78,6 @@ int	calculate_a_rotations(int nbr, t_stack *stack)
 	cheap_n = best_b(stack, nbr);
 	while (stack && stack->nbr != cheap_n)
 	{
-		// ft_printf("%d\n", stack->nbr);
 		forward_count++;
 		stack = stack->next;
 	}
@@ -94,13 +93,15 @@ char	*cheapest_move(t_stack *stacka, t_stack *stackb)
 	int		a_rotations;
 	char	*tot_op;
 
-	ft_printf("a:");
-	ft_check(stacka);
-	ft_printf("b:");
-	ft_check(stackb);
+	// ft_printf("a:");
+	// ft_check(stacka);
+	// ft_printf("b:");
+	// ft_check(stackb);
 	b_rotations = calculate_b_rotations(stackb->nbr, stackb);
 	a_rotations = calculate_a_rotations(stacka->nbr, stacka);
-	if (a_rotations == b_rotations)
+	if (a_rotations == 0)
+		tot_op = "pb";
+	else if (a_rotations == b_rotations)
 		tot_op = "rrr";
 	else if (a_rotations > b_rotations)
 		tot_op = "rb";

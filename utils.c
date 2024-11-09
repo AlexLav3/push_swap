@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 21:20:44 by elavrich          #+#    #+#             */
-/*   Updated: 2024/11/06 16:50:08 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/11/08 20:14:42 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ void	ft_check(t_stack *stack)
 {
 	while (stack)
 	{
-		printf("%d ", stack->nbr);
+		ft_printf("%d ", stack->nbr);
 		stack = stack->next;
 	}
-	printf("\n");
+	ft_printf("\n");
 }
 
 int	create_stacka(int argc, char **argv, t_stack **stacka)

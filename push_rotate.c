@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 17:07:24 by elavrich          #+#    #+#             */
-/*   Updated: 2024/11/06 18:12:24 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/11/08 22:39:50 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ void	ra(t_stack **stacka)
 	first->next = NULL;
 	last = ft_lstlast(*stacka);
 	last->next = first;
-	ft_printf("ra\n");
 }
 
 void	rb(t_stack **stackb)
@@ -66,11 +65,11 @@ void	rb(t_stack **stackb)
 	first->next = NULL;
 	last = ft_lstlast(*stackb);
 	last->next = first;
-	ft_printf("rb\n");
 }
 
 void	rr(t_stack **stacka, t_stack **stackb)
 {
 	ra(stacka);
 	rb(stackb);
+	ft_printf("rr\n");
 }
