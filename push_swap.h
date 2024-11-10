@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 16:42:36 by elavrich          #+#    #+#             */
-/*   Updated: 2024/11/08 03:52:07 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/11/09 21:36:32 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ int					calculate_total_rotations(int nbr, t_stack *stacka,
 int					position_in_stack(t_stack *stack, int nbr);
 
 int					is_sorted(t_stack *stack);
+int					is_sorted_rev(t_stack *stack);
+
 void				ft_check(t_stack *stack);
 int					create_stacka(int argc, char **argv, t_stack **stacka);
 

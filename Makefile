@@ -1,5 +1,5 @@
 NAME = push_swap
-CC = gcc
+CC = gcc -g 
 CFLAGS =
 SOURCES = push_swap.c f_stack.c swap_functions.c push_rotate.c other.c rrr_functions.c sort_5.c \
 utils.c r_calculations.c more_than_5.c

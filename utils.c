@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 21:20:44 by elavrich          #+#    #+#             */
-/*   Updated: 2024/11/08 20:14:42 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/11/09 22:11:03 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	ft_check(t_stack *stack)
 {
+	if (!stack)
+		return ;
 	while (stack)
 	{
 		ft_printf("%d ", stack->nbr);
@@ -59,6 +61,8 @@ int	ft_strcmp(char *s1, char *s2)
 	int	i;
 
 	i = 0;
+	if (!s1 || !s2)
+		return (-1);
 	while (s1[i] && s2[i] && s1[i] == s2[i])
 	{
 		i++;
@@ -67,6 +71,8 @@ int	ft_strcmp(char *s1, char *s2)
 }
 int	is_sorted(t_stack *stack)
 {
+	if (!stack)
+		return (0);
 	while (stack && stack->next)
 	{
 		if (stack->nbr > stack->next->nbr)
@@ -75,6 +81,23 @@ int	is_sorted(t_stack *stack)
 	}
 	return (1);
 }
+
+int	is_sorted_rev(t_stack *stack)
+{
+	t_stack	*tmp;
+
+	if (!stack || !stack->next)
+		return (1);
+	tmp = ft_lstlast(stack);
+	while (tmp && tmp->prev)
+	{
+		if (tmp->nbr > tmp->prev->nbr)
+			return (0);
+		tmp = tmp->prev;
+	}
+	return (1);
+}
+
 int	calculate_total_rotations(int nbr, t_stack *stacka, t_stack *stackb)
 {
 	int	a_rotations;
@@ -91,6 +114,8 @@ int	position_in_stack(t_stack *stack, int nbr)
 	int	position;
 
 	position = 0;
+	if (!stack)
+		return (-1);
 	while (stack)
 	{
 		if (stack->nbr == nbr)

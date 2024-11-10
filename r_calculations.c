@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 23:55:34 by elavrich          #+#    #+#             */
-/*   Updated: 2024/11/09 01:47:23 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/11/10 01:54:59 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	find_min(t_stack *stack)
 {
 	int	min;
 
+	if (!stack)
+		return (-1);
 	min = stack->nbr;
 	while (stack)
 	{
@@ -30,6 +32,8 @@ int	find_max(t_stack *stack)
 {
 	int	max;
 
+	if (!stack)
+		return (-1);
 	max = stack->nbr;
 	while (stack)
 	{
@@ -97,6 +101,8 @@ char	*cheapest_move(t_stack *stacka, t_stack *stackb)
 	// ft_check(stacka);
 	// ft_printf("b:");
 	// ft_check(stackb);
+	if (!stacka || !stackb)
+		return (NULL);
 	b_rotations = calculate_b_rotations(stackb->nbr, stackb);
 	a_rotations = calculate_a_rotations(stacka->nbr, stacka);
 	if (a_rotations == 0)

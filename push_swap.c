@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 16:09:47 by elavrich          #+#    #+#             */
-/*   Updated: 2024/11/09 01:47:05 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/11/10 02:15:17 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,19 @@ int	main(int argc, char **argv)
 	push_count = 0;
 	if (!is_sorted(stacka))
 	{
-		while (push_count < 2 && stacka != NULL)
+		if (stacka_size <= 5)
+			sort_max_5(&stacka, &stackb);
+		else
 		{
-			pb(&stacka, &stackb);
-			push_count++;
+			while (push_count < 2 && stacka != NULL)
+			{
+				pb(&stacka, &stackb);
+				push_count++;
+			}
+			do_cheapest_m(&stacka, &stackb);
 		}
-		//ft_check(stacka);
-		//ft_check(stackb);
-		do_cheapest_m(&stacka, &stackb);
 	}
-	 //ft_check(stacka);
+	// ft_check(stacka);
 	// ft_check(stackb);
 	return (0);
 }

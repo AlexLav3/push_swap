@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 17:07:24 by elavrich          #+#    #+#             */
-/*   Updated: 2024/11/08 22:39:50 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/11/09 23:14:00 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	ra(t_stack **stacka)
 
 	if (!*stacka || !(*stacka)->next)
 		return ;
+	//ft_check(*stacka);
 	first = *stacka;
 	*stacka = first->next;
 	first->next = NULL;
