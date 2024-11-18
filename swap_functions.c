@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 16:38:10 by elavrich          #+#    #+#             */
-/*   Updated: 2024/10/31 00:59:12 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/11/18 19:34:35 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,11 @@ void	ss(t_stack **stacka, t_stack **stackb)
 {
 	sa(stacka);
 	sb(stackb);
-	ft_printf("ss\n");
+}
+void	f_rrr(t_stack **stacka, t_stack **stackb)
+{
+	rrr(stacka, stackb);
+	position_in_stack(*stacka);
+	position_in_stack(*stackb);
+	ft_printf("rrr\n");
 }

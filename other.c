@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 18:56:43 by elavrich          #+#    #+#             */
-/*   Updated: 2024/11/08 20:14:06 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/11/16 23:36:04 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,29 +63,4 @@ int	is_numeric(const char *str)
 		i++;
 	}
 	return (0);
-}
-int	best_b(t_stack *stack, int nbr)
-{
-	int	f_nbr;
-
-	f_nbr = find_max(stack);
-	if (nbr > f_nbr)
-	{
-		f_nbr = find_min(stack);
-		return (f_nbr);
-	}
-	if (nbr < find_min(stack))
-	{
-		f_nbr = find_min(stack);
-		return (f_nbr);
-	}
-	//ft_check(stack);
-	while (stack)
-	{
-		if (stack->nbr > nbr && stack->nbr < f_nbr)
-			f_nbr = stack->nbr;
-		//ft_printf("f_nbr:%d \n", f_nbr);
-		stack = stack->next;
-	}
-	return (f_nbr);
 }

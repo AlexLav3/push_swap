@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 21:20:44 by elavrich          #+#    #+#             */
-/*   Updated: 2024/11/09 22:11:03 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/11/18 19:36:29 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,28 +47,6 @@ int	create_stacka(int argc, char **argv, t_stack **stacka)
 	return (0);
 }
 
-int	get_abs(int nbr)
-{
-	if (nbr < 0)
-	{
-		return (nbr * -1);
-	}
-	return (nbr);
-}
-
-int	ft_strcmp(char *s1, char *s2)
-{
-	int	i;
-
-	i = 0;
-	if (!s1 || !s2)
-		return (-1);
-	while (s1[i] && s2[i] && s1[i] == s2[i])
-	{
-		i++;
-	}
-	return (s1[i] - s2[i]);
-}
 int	is_sorted(t_stack *stack)
 {
 	if (!stack)
@@ -81,47 +59,34 @@ int	is_sorted(t_stack *stack)
 	}
 	return (1);
 }
-
-int	is_sorted_rev(t_stack *stack)
-{
-	t_stack	*tmp;
-
-	if (!stack || !stack->next)
-		return (1);
-	tmp = ft_lstlast(stack);
-	while (tmp && tmp->prev)
-	{
-		if (tmp->nbr > tmp->prev->nbr)
-			return (0);
-		tmp = tmp->prev;
-	}
-	return (1);
-}
-
-int	calculate_total_rotations(int nbr, t_stack *stacka, t_stack *stackb)
-{
-	int	a_rotations;
-	int	b_rotations;
-
-	a_rotations = calculate_a_rotations(nbr, stacka);
-	b_rotations = calculate_b_rotations(nbr, stackb);
-	if (a_rotations == b_rotations)
-		return (a_rotations);
-	return (a_rotations + b_rotations);
-}
-int	position_in_stack(t_stack *stack, int nbr)
+void	position_in_stack(t_stack *stack)
 {
 	int	position;
+	int	median;
 
+	median = (stack_size_f(stack) - 1) / 2;
 	position = 0;
-	if (!stack)
-		return (-1);
 	while (stack)
 	{
-		if (stack->nbr == nbr)
-			return (position);
-		position++;
+		stack->position = position;
+		if (position <= median)
+			stack->above_median = 1;
+		else
+			stack->above_median = 0;
 		stack = stack->next;
+		position++;
 	}
-	return (-1);
+}
+
+void	sort_max_3(t_stack **stacka)
+{
+	t_stack	*highest;
+
+	highest = find_max(*stacka);
+	if (*stacka == highest)
+		f_ra(stacka);
+	else if ((*stacka)->next == highest)
+		f_rra(stacka);
+	if ((*stacka)->next->nbr < (*stacka)->nbr)
+		f_sa(stacka);
 }
