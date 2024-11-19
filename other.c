@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 18:56:43 by elavrich          #+#    #+#             */
-/*   Updated: 2024/11/16 23:36:04 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/11/18 23:51:13 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int	check_value(int i)
 
 int	check_duplicates(t_stack *stack, int value)
 {
+	if (!stack)
+		return (free(stack), 0);
 	while (stack)
 	{
 		if (stack->nbr == value)
@@ -51,6 +53,8 @@ int	is_numeric(const char *str)
 {
 	int	i;
 
+	if (!str)
+		return (1);
 	i = 0;
 	if (str[i] == '-' || str[i] == '+')
 		i++;

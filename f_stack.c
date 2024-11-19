@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 17:01:35 by elavrich          #+#    #+#             */
-/*   Updated: 2024/10/25 20:22:54 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/11/18 23:52:31 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	stack_size_f(t_stack *stack)
 	int	i;
 
 	i = 0;
+	if (!stack)
+		return (0);
 	while (stack != NULL)
 	{
 		i++;
@@ -42,7 +44,7 @@ t_stack	*ft_lstnew(int nbr)
 
 	new = malloc(sizeof(t_stack));
 	if (!new)
-		return (NULL);
+		return (free(new), NULL);
 	new->nbr = nbr;
 	new->next = NULL;
 	return (new);

@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 21:20:44 by elavrich          #+#    #+#             */
-/*   Updated: 2024/11/18 19:36:29 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/11/19 00:12:12 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,18 @@ int	create_stacka(int argc, char **argv, t_stack **stacka)
 	while (i < argc)
 	{
 		split_argc = ft_split(argv[i], ' ');
+		if (!split_argc)
+			return (0);
 		j = 0;
 		while (split_argc[j])
 		{
 			if (stack_cc(split_argc[j], stacka))
-				return (1);
+				return (free_split(split_argc), 1);
 			j++;
 		}
+		free_split(split_argc);
 		i++;
 	}
-	free(split_argc);
 	return (0);
 }
 
@@ -59,11 +61,14 @@ int	is_sorted(t_stack *stack)
 	}
 	return (1);
 }
+
 void	position_in_stack(t_stack *stack)
 {
 	int	position;
 	int	median;
 
+	if (!stack)
+		return ;
 	median = (stack_size_f(stack) - 1) / 2;
 	position = 0;
 	while (stack)
@@ -82,6 +87,8 @@ void	sort_max_3(t_stack **stacka)
 {
 	t_stack	*highest;
 
+	if (!*stacka)
+		return ;
 	highest = find_max(*stacka);
 	if (*stacka == highest)
 		f_ra(stacka);

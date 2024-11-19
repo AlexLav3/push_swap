@@ -16,7 +16,7 @@ ${NAME} : ${OBJECTS}
 	ar rcs ${NAME} ${OBJECTS}
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	cc $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJECTS)

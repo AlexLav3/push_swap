@@ -6,41 +6,41 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 00:42:11 by elavrich          #+#    #+#             */
-/*   Updated: 2024/11/18 02:43:33 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/11/19 00:28:29 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	set_target_asc(t_stack *stacka, t_stack *stackb)
+void	set_bb_asc(t_stack *stacka, t_stack *stackb)
 {
-	t_stack	*current_a;
-	t_stack	*target_node;
+	t_stack	*c_a;
+	t_stack	*push_pos;
 	long	largest_smaller;
 
-	target_node = find_min(stacka);
+	push_pos = find_min(stacka);
 	largest_smaller = LONG_MAX;
 	while (stackb)
 	{
 		largest_smaller = LONG_MAX;
-		current_a = stacka;
-		while (current_a)
+		c_a = stacka;
+		while (c_a)
 		{
-			if (current_a->nbr > stackb->nbr
-				&& current_a->nbr < largest_smaller)
+			if (c_a->nbr > stackb->nbr && c_a->nbr < largest_smaller)
 			{
-				largest_smaller = current_a->nbr;
-				target_node = current_a;
+				largest_smaller = c_a->nbr;
+				push_pos = c_a;
 			}
-			current_a = current_a->next;
+			c_a = c_a->next;
 		}
 		if (LONG_MAX == largest_smaller)
-			stackb->target_node = find_min(stacka);
+			stackb->push_pos = find_min(stacka);
 		else
-			stackb->target_node = target_node;
+			stackb->push_pos = push_pos;
 		stackb = stackb->next;
 	}
 }
+
 void	price_b_to_a(t_stack *stacka, t_stack *stackb)
 {
 	int	l_a;
@@ -55,13 +55,14 @@ void	price_b_to_a(t_stack *stacka, t_stack *stackb)
 		stackb->price = stackb->position;
 		if (!(stackb->above_median))
 			stackb->price = l_b - (stackb->position);
-		if (stackb->target_node->above_median)
-			stackb->price += stackb->target_node->position;
+		if (stackb->push_pos->above_median)
+			stackb->price += stackb->push_pos->position;
 		else
-			stackb->price += l_a - (stackb->target_node->position);
+			stackb->price += l_a - (stackb->push_pos->position);
 		stackb = stackb->next;
 	}
 }
+
 t_stack	*cheapest_b(t_stack *stackb)
 {
 	if (NULL == stackb)
@@ -96,11 +97,12 @@ void	cheapest_n_b(t_stack *stackb)
 	if (best_node)
 		best_node->cheapest = 1;
 }
+
 void	set_values_btoa(t_stack *stacka, t_stack *stackb)
 {
 	position_in_stack(stacka);
 	position_in_stack(stackb);
-	set_target_asc(stacka, stackb);
+	set_bb_asc(stacka, stackb);
 	price_b_to_a(stacka, stackb);
 	cheapest_n_b(stackb);
 }

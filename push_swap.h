@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 16:42:36 by elavrich          #+#    #+#             */
-/*   Updated: 2024/11/18 01:46:23 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/11/19 00:36:52 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,42 +28,40 @@ typedef struct s_stack
 	int				cheapest;
 	struct s_stack	*next;
 	struct s_stack	*prev;
-	struct s_stack	*target_node;
+	struct s_stack	*push_pos;
 
 }					t_stack;
 
+void				free_stack(t_stack **stack);
+void				free_split(char **split_argc);
+
+// main functions
+void				push_swap(t_stack **stacka, t_stack **stackb);
+void				initial_sort(t_stack **stacka, t_stack **stackb);
+void				move_to_a_in_chunks(t_stack **stacka, t_stack **stackb);
+t_stack				*get_chunk_end(t_stack *current_b, int chunk_size);
+
+// setting values
 void				price_b_to_a(t_stack *stacka, t_stack *stackb);
 t_stack				*cheapest_b(t_stack *stackb);
 void				set_values_btoa(t_stack *stacka, t_stack *stackb);
 void				move_to_a(t_stack **stacka, t_stack **stackb);
 void				cheapest_n_b(t_stack *stackb);
-
-t_stack				*cheapest(t_stack *stacka);
-
-void				set_values_atob(t_stack *stacka, t_stack *stackb);
-static void			set_target_asc(t_stack *stacka, t_stack *stackb);
-static void			set_target_des(t_stack *stacka, t_stack *stackb);
-void				price_a_to_b(t_stack *stacka, t_stack *stackb);
-void				cheapest_n(t_stack *stacka);
+void				set_bb_asc(t_stack *stacka, t_stack *stackb);
 void				position_in_stack(t_stack *stacka);
-void				move_to_b(t_stack **stacka, t_stack **stackb);
 
 // min and max
 t_stack				*find_max(t_stack *stack);
 t_stack				*find_min(t_stack *stack);
 
-// main ones
-char				*cheapest_move(t_stack *stacka, t_stack *stackb);
-
 // helper
 void				ft_check(t_stack *stack);
 int					is_sorted(t_stack *stack);
 
-// sorting mini
+// sorting 3
 void				sort_max_3(t_stack **stacka);
-void				sort_max_3_des(t_stack **stacka);
 
-// initial functions
+// starting functions
 int					create_stacka(int argc, char **argv, t_stack **stacka);
 int					check_value(int i);
 int					check_duplicates(t_stack *stack, int value);

@@ -6,49 +6,70 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 16:09:47 by elavrich          #+#    #+#             */
-/*   Updated: 2024/11/18 20:08:41 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/11/18 23:36:56 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+void	push_swap(t_stack **stacka, t_stack **stackb)
 {
-	int		i;
-	t_stack	*stacka;
-	t_stack	*stackb;
 	int		stacka_size;
 	t_stack	*lowest;
 
-	stacka = NULL;
-	stackb = NULL;
-	i = 1;
-	if (argc == 1)
-		return (0);
-	if (create_stacka(argc, argv, &stacka))
-		return (0);
-	stacka_size = stack_size_f(stacka);
-	i++;
+	stacka_size = stack_size_f(*stacka);
 	if (stacka_size == 3)
 	{
-		sort_max_3(&stacka);
-		return (0);
+		sort_max_3(stacka);
+		return ;
 	}
-	while (stack_size_f(stacka) > 3)
-		f_pb(&stacka, &stackb);
-	sort_max_3(&stacka);
-	while (stackb)
-	{
-		set_values_btoa(stacka, stackb);
-		move_to_a(&stacka, &stackb);
-	}
-	lowest = find_min(stacka);
-	while (stacka != lowest)
+	while (stack_size_f(*stacka) > 3)
+		f_pb(stacka, stackb);
+	sort_max_3(stacka);
+	move_to_a_in_chunks(stacka, stackb);
+	lowest = find_min(*stacka);
+	while (*stacka != lowest)
 	{
 		if (lowest->above_median)
-			f_ra(&stacka);
+			f_ra(stacka);
 		else
-			f_rra(&stacka);
+			f_rra(stacka);
 	}
-	return (0);
+}
+
+void	move_to_a_in_chunks(t_stack **stacka, t_stack **stackb)
+{
+	int		chunk_size;
+	t_stack	*chunk_end;
+	t_stack	*current_b;
+
+	chunk_size = 4;
+	current_b = *stackb;
+	while (*stackb)
+	{
+		chunk_end = get_chunk_end(current_b, chunk_size);
+		while (current_b != chunk_end && current_b)
+		{
+			set_values_btoa(*stacka, *stackb);
+			move_to_a(stacka, stackb);
+			current_b = *stackb;
+		}
+		if (*stackb)
+			current_b = *stackb;
+	}
+}
+
+t_stack	*get_chunk_end(t_stack *current_b, int chunk_size)
+{
+	int		count;
+	t_stack	*chunk_end;
+
+	count = 0;
+	chunk_end = current_b;
+	while (chunk_end && count < chunk_size)
+	{
+		chunk_end = chunk_end->next;
+		count++;
+	}
+	return (chunk_end);
 }
