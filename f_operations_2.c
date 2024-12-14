@@ -6,12 +6,13 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 00:36:42 by elavrich          #+#    #+#             */
-/*   Updated: 2024/11/18 23:37:29 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/12/14 22:09:56 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+//hello
 void	f_ra(t_stack **stacka)
 {
 	ra(stacka);
